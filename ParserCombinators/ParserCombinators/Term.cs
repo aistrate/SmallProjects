@@ -23,7 +23,8 @@ namespace ParserCombinators
 
         public override string ToString()
         {
-            return string.Format("Lambda {{\"{0}\", LambdaBody={1}}}", Ident, Term);
+            //return string.Format("Lambda {{\"{0}\", LambdaBody={1}}}", Ident, Term);
+            return string.Format("\\{0} -> {1}", Ident, Term);
         }
     }
 
@@ -42,7 +43,8 @@ namespace ParserCombinators
 
         public override string ToString()
         {
-            return string.Format("Let {{\"{0}\",\nRhs={1}, \n\nLetBody=\n{2}}}", Ident, Rhs, Body);
+            //return string.Format("Let {{\"{0}\",\nRhs={1}, \n\nLetBody=\n{2}}}", Ident, Rhs, Body);
+            return string.Format("let {0} = {1} in\n{2}", Ident, Rhs, Body);
         }
     }
 
@@ -59,7 +61,8 @@ namespace ParserCombinators
 
         public override string ToString()
         {
-            return string.Format("Apply {{Func={0}, Args=[{1}]}}", Func, string.Join(", ", Args.Select(a => a.ToString()).ToArray()));
+            //return string.Format("Apply {{Func={0}, Args=[{1}]}}", Func, string.Join(", ", Args.Select(a => a.ToString()).ToArray()));
+            return string.Format("({0} {1})", Func, string.Join(" ", Args.Select(a => a.ToString()).ToArray()));
         }
     }
     
@@ -74,7 +77,8 @@ namespace ParserCombinators
 
         public override string ToString()
         {
-            return string.Format("Var{{\"{0}\"}}", Ident);
+            //return string.Format("Var{{\"{0}\"}}", Ident);
+            return string.Format("{0}", Ident);
         }
     }
 }
