@@ -24,7 +24,7 @@ namespace ParserCombinators
         public override string ToString()
         {
             //return string.Format("Lambda {{\"{0}\", LambdaBody={1}}}", Ident, Term);
-            return string.Format("\\{0} -> {1}", Ident, Term);
+            return string.Format("\\{0}. {1}", Ident, Term);
         }
     }
 
