@@ -20,6 +20,9 @@ namespace ParserCombinators
 
         public Parser<TInput, TValue[]> Rep1<TValue>(Parser<TInput, TValue> parser)
         {
+            //return parser.SelectMany(x => Rep(parser),
+            //                         (x, xs) => (new[] { x }).Concat(xs).ToArray());
+
             return from x in parser
                    from xs in Rep(parser)
                    select (new[] { x }).Concat(xs).ToArray();

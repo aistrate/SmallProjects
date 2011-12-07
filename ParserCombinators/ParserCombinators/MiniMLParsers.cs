@@ -12,7 +12,10 @@ namespace ParserCombinators
         {
             Whitespace = Rep(Char(' ').OR(Char('\t').OR(Char('\n')).OR(Char('\r'))));
 
-            WsChr = chr => Whitespace.AND(Char(chr));
+            //WsChr = chr => Whitespace.AND(Char(chr));
+            WsChr = chr => from w in Whitespace
+                           from c in Char(chr)
+                           select c;
 
             Id = from w in Whitespace
                  from c in Char(char.IsLetter)
